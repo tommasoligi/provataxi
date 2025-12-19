@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contatti - Rent Mario</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Syne:700,800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Azeret+Mono:400,700&display=swap">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Rent Mario</h1>
+    <nav>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="contatti.html" class="nav-link">Contatti</a>
+      <a href="recensioni.html" class="nav-link">Recensioni</a>
+    </nav>
+  </header>
+ <main>
+  <section class="contact-hero section-animate">
+    <div class="hero-bg">
+      <img src="https://images.pexels.com/photos/193993/pexels-photo-193993.jpeg?auto=compress&w=1200&q=80" alt="Van in movimento" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <h2 class="hero-title">Contattaci</h2>
+      <p class="hero-subtitle">
+        Hai domande, vuoi un preventivo o vuoi prenotare subito il tuo van?<br>
+        Compila il modulo qui sotto o scrivici direttamente:<br>
+        <b><a href="mailto:info@rentmario.it">info@rentmario.it</a></b><br>
+        <b><a href="tel:+393289623852">+39 328 96 23 852</a></b>
+      </p>
+    </div>
+  </section>
+ <section class="contacts-row section-animate">
+  <div class="contact-section">
+    <form id="contact-form" action="send-contact.php" method="POST">
+      <label>Nome</label>
+      <input type="text" name="nome" required />
+      <label>Email</label>
+      <input type="email" name="email" required />
+      <label>Telefono</label>
+      <input type="tel" name="telefono" />
+      <label>Oggetto</label>
+      <input type="text" name="oggetto" />
+      <label>Messaggio</label>
+      <textarea name="messaggio" required rows="5"></textarea>
+      <button type="submit" class="cta-btn">Invia richiesta</button>
+    </form>
+
+    <div id="contact-success" class="contact-success" style="<?php echo isset($_GET['ok']) ? 'display:block;' : 'display:none;'; ?>">
+      <?php
+        if (isset($_GET['ok'])) {
+          echo "Richiesta inviata correttamente, ti risponderemo al più presto.";
+        } elseif (isset($_GET['error'])) {
+          echo "Si è verificato un errore, riprova oppure scrivici a info@rentmario.it.";
+        }
+      ?>
+    </div>
+  </div>
+
+  <div class="reviews-slider reviews-slider-contacts">
+    <h3 class="reviews-title">Le esperienze dei nostri clienti</h3>
+    <div class="slider-container">
+      <div id="reviews-list" class="reviews-list">
+        <!-- Le recensioni appariranno qui -->
+      </div>
+    </div>
+    <div class="review-link">
+      <a href="recensioni.html" class="cta-btn">Recensioni</a>
+    </div>
+  </div>
+</section>
+</main>
+  <footer class="footer">
+    <div>
+      <b>Contatti:</b> <a href="tel:+393289623852">+39 328 96 23 852</a> | <a href="mailto:info@rentmario.it">info@rentmario.it</a>
+    </div>
+    <div>
+      <a href="index.html">Home</a> | 
+      <a href="contatti.html">Contatti</a> | 
+      <a href="recensioni.html">Recensioni</a>
+    </div>
+    <div>
+      © <span id="year"></span> Rent Mario - Noleggio van senza conducente
+    </div>
+  </footer>
+  <script src="main.js"></script>
+  <button id="backToTop" class="back-to-top" aria-label="Torna all'inizio">
+    ⇧
+  </button>
+</body>
+</html>
